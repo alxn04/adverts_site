@@ -1,0 +1,445 @@
+/* Общие стили для сайта */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнеры */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-container {
+    padding: 20px;
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* Шапка */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+
+.center_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.center_header h1 {
+    flex: 1;
+    text-align: center;
+    margin-left: -100px;
+    font-size: 24px;
+}
+
+/* Подвал сайта */
+
+footer {
+    background-color: #ddd;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    margin: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* Навигация */
+
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #007bff;
+}
+
+.margins_h1 {
+    text-align: center;
+}
+
+/* Стили для карточек объявлений */
+.ads-card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ads-card h3 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.ads-card p {
+    color: #666;
+}
+
+.ads-card .author {
+    font-size: 0.9em;
+    color: #007bff;
+}
+
+/* Стили для форм */
+.reg-form {
+    width: 80%;
+    background-color: white;
+    display: block;
+    align-self: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reg-form-login {
+    width: 500px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="file"],
+textarea {
+    width: 100%;
+    /* Поля растягиваются на всю ширину */
+    padding: 10px;
+    margin: 10px 0;
+    /* Отступы между полями */
+    border: 1px solid #ccc;
+    /* Рамка вокруг поля */
+    border-radius: 4px;
+    /* Закругленные углы полей */
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[type="file"] {
+    padding: 20px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+}
+
+
+
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для профиля */
+.profile-card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.profile-card h2 {
+    font-size: 1.8em;
+    color: #333;
+}
+
+.profile-card p {
+    color: #666;
+}
+
+
+.profile-card img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.profile-card .profile-info {
+    color: #666;
+}
+
+.profile-card h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-top: 0;
+}
+
+.profile-card p {
+    margin: 5px 0;
+}
+
+.profile-card a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.profile-card a:hover {
+    color: #0056b3;
+}
+
+.ads-card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ads-card h3 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.ads-card p {
+    color: #666;
+}
+
+.ads-card a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+.ads-card form {
+    display: inline;
+}
+
+.ads-card button {
+    font-family: Arial;
+    background-color: #007bff;
+    color: white;
+    /* padding: 8px 15px; */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    /* margin-top: 10px; */
+}
+
+.ads-card button:hover {
+    background-color: #0056b3;
+}
+
+.back-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav {
+        font-size: 0.9em;
+    }
+
+    .profile-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-card img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+.ads-list {
+    margin-top: 20px;
+}
+
+.ads-card {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ads-card h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0 0 10px;
+}
+
+.ads-card p {
+    color: #666;
+    margin: 0 0 15px;
+}
+
+.ads-actions {
+    display: flex;
+    gap: 10px;
+    height: 40px;
+}
+
+.no-ads {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #666;
+    font-size: 1em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Кнопки */
+
+
+
+.ads-actions .btn-edit {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.ads-actions .btn-edit:hover {
+    background-color: #0056b3;
+}
+
+.ads-actions .btn-delete {
+    background-color: #dc3545;
+    color: white;
+    font-weight: bold;
+    margin: 0px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.ads-actions .btn-delete:hover {
+    background-color: #b02a37;
+}
+
+.btn-create {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.btn-create:hover {
+    background-color: #218838;
+}
+
+
+/* Кнопка назад */
+
+button#backButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.1s ease;
+}
+
+button#backButton:hover {
+    color: #007bff;
+}
+
+button#backButton i {
+    font-size: 18px;
+}
+
+
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav {
+        font-size: 0.9em;
+    }
+}

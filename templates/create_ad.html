@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать объявление</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Создать объявление</h1>
+    </header>
+    <div class="container">
+        <div class="form-container">
+            <form class="reg-form" method="POST">
+                <label for="title">Заголовок:</label>
+                <input type="text" name="title" required><br><br>
+
+                <label for="content">Контент:</label>
+                <textarea name="content" required></textarea><br><br>
+
+                <button type="submit">Создать</button>
+            </form>
+        </div>
+        <div class="back-link">
+            <a href="{{ url_for('profile') }}">Назад</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; Cool Girls Campaign, 2025</p>
+    </footer>
+</body>
+
+</html>
