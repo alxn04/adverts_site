@@ -13,7 +13,7 @@ from os import path
 app = Flask(__name__)
 print(app.url_map)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'секретно-секретный секрет')
-app.config['DB_TYPE'] = 'postgres'
+app.config['DB_TYPE'] = os.getenv('DB_TYPE', 'postgres')
 jsonrpc = JSONRPC(app, '/api')
 
 # Папка для загрузки аватаров
@@ -30,13 +30,13 @@ def db_connect():
             user='postgres',
             password='1234'
         )
+        cur = conn.cursor(cursor_factory=RealDictCursor)
     else:
         dir_path = path.dirname(path.realpath(__file__))
         db_path = path.join(dir_path, "database.db")
         conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
         cur = conn.cursor()
-        cur = conn.cursor(cursor_factory=RealDictCursor)
     return conn, cur
 
 def db_close(conn, cur):
@@ -218,12 +218,12 @@ def edit_ad(ad_id):
     ad = dict(cur.fetchone())  # Преобразуем результат в словарь
 
     if ad is None or ad['user_id'] != session['user_id']:  # Проверка, что пользователь является владельцем объявления
-        return redirect(url_for('main'))  
+        return redirect(url_for('main'))
 
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
-        
+
         if current_app.config['DB_TYPE'] == 'postgres':
             cur.execute("UPDATE ads SET title=%s, content=%s WHERE id=%s;", (title, content, ad_id))
         else:
@@ -267,14 +267,14 @@ def profile():
         return redirect(url_for('login'))
 
     conn, cur = db_connect()
-    
+
     if current_app.config['DB_TYPE'] == 'postgres':
         cur.execute("SELECT * FROM users WHERE id=%s;", (session['user_id'],))
     else:
         cur.execute("SELECT * FROM users WHERE id=?;", (session['user_id'],))
     user = dict(cur.fetchone())
 
-    if current_app.config['DB_TYPE'] == 'postgres':    
+    if current_app.config['DB_TYPE'] == 'postgres':
         cur.execute("""
             SELECT * FROM ads WHERE user_id=%s;
         """, (session['user_id'],))
@@ -408,7 +408,7 @@ def ads():
 def create_ad_rpc(title: str, content: str):
     if 'user_id' not in session:
         return {'error': 'Unauthorized'}
-    
+
     user_id = session['user_id']
     conn, cur = db_connect()
 
@@ -425,7 +425,7 @@ def create_ad_rpc(title: str, content: str):
 def edit_ad_rpc(ad_id: int, title: str, content: str):
     if 'user_id' not in session:
         return {'error': 'Unauthorized'}
-    
+
     conn, cur = db_connect()
 
     if current_app.config['DB_TYPE'] == 'postgres':
@@ -448,7 +448,7 @@ def edit_ad_rpc(ad_id: int, title: str, content: str):
 def delete_ad_rpc(ad_id: int):
     if 'user_id' not in session:
         return {'error': 'Unauthorized'}
-    
+
     conn, cur = db_connect()
 
     if current_app.config['DB_TYPE'] == 'postgres':
@@ -476,7 +476,7 @@ def delete_ad_admin(ad_id):
 
         # Проверяем, администратор ли пользователь
         is_admin = session.get('is_admin', False)
-        
+
         if is_admin:
             # Администратор может удалить любое объявление
             if current_app.config['DB_TYPE'] == 'postgres':
@@ -507,6 +507,6 @@ def delete_ad_admin(ad_id):
     except Exception as e:
         db_close(conn, cur)
         return f"An error occurred: {str(e)}"
-    
+
 if __name__ == '__main__':
     app.run(debug=True)
