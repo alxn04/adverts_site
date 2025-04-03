@@ -4,6 +4,7 @@ from flask_jsonrpc import JSONRPC
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import os
+import sqlite3
 from werkzeug.utils import secure_filename
 from os import path
 
@@ -29,6 +30,12 @@ def db_connect():
             user='postgres',
             password='1234'
         )
+    else:
+        dir_path = path.dirname(path.realpath(__file__))
+        db_path = path.join(dir_path, "database.db")
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
         cur = conn.cursor(cursor_factory=RealDictCursor)
     return conn, cur
 
@@ -82,6 +89,9 @@ def register():
         if current_app.config['DB_TYPE'] == 'postgres':
             cur.execute("INSERT INTO users (login, password, fullname, email, about, avatar) VALUES (%s, %s, %s, %s, %s, %s);",
                         (login, password, fullname, email, about, filename))
+        else:
+            cur.execute("INSERT INTO users (login, password, fullname, email, about, avatar) VALUES (?, ?, ?, ?, ?, ?);",
+                        (login, password, fullname, email, about, filename))
         db_close(conn, cur)
 
         # Перенаправляем на главную страницу после регистрации
@@ -101,6 +111,8 @@ def login():
             conn, cur = db_connect()
             if current_app.config['DB_TYPE'] == 'postgres':
                 cur.execute("SELECT * FROM users WHERE login=%s;", (login,))
+            else:
+                cur.execute("SELECT * FROM users WHERE login=?;", (login,))
             user = cur.fetchone()
 
             if user and check_password_hash(dict(user)['password'], password):  # Используем user['password']
