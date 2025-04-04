@@ -80,42 +80,44 @@
 </head>
 
 <body>
-    <header>
-        <h1>Редактировать профиль</h1>
-    </header>
-    <div class="container">
-        <div class="form-container">
-            <form class="reg-form" method="POST" enctype="multipart/form-data" class="profile-form">
-                <div class="form-group">
-                    <label for="fullname">Полное имя:</label>
-                    <input type="text" name="fullname" value="{{ user.fullname }}" required>
-                </div>
+    <main>
+        <header>
+            <h1>Редактировать профиль</h1>
+        </header>
+        <div class="container">
+            <div class="form-container">
+                <form class="reg-form" method="POST" enctype="multipart/form-data" class="profile-form">
+                    <div class="form-group">
+                        <label for="fullname">Полное имя:</label>
+                        <input type="text" name="fullname" value="{{ user.fullname }}" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" value="{{ user.email }}" required>
-                </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" value="{{ user.email }}" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="about">О себе:</label>
-                    <textarea name="about">{{ user.about }}</textarea>
-                </div>
+                    <div class="form-group">
+                        <label for="about">О себе:</label>
+                        <textarea name="about">{{ user.about }}</textarea>
+                    </div>
 
-                <div class="form-group">
-                    <label for="avatar">Аватар:</label>
-                    <input type="file" name="avatar">
-                </div>
+                    <div class="form-group">
+                        <label for="avatar">Аватар:</label>
+                        <input type="file" name="avatar">
+                    </div>
 
-                <div class="form-actions">
-                    <button type="submit" class="submit-btn">Сохранить изменения</button>
-                </div>
-            </form>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Сохранить изменения</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="back-link">
+                <a href="{{ url_for('profile') }}">Назад</a>
+            </div>
         </div>
-
-        <div class="back-link">
-            <a href="{{ url_for('profile') }}">Назад</a>
-        </div>
-    </div>
+    </main>
     <footer>
         <p>&copy; Cool Girls Campaign, 2025</p>
     </footer>

@@ -9,28 +9,30 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="my-4">Доска объявлений</h1>
+    <main>
+        <div class="container">
+            <h1 class="my-4">Доска объявлений</h1>
 
-        {% if ads %}
-        <div class="list-group">
-            {% for ad in ads %}
-            <div class="list-group-item">
-                <h5 class="mb-1">{{ ad[1] }}</h5> <!-- Заголовок -->
-                <p class="mb-1">{{ ad[2] }}</p> <!-- Контент -->
-                <small>Автор: {{ ad[3] }}</small><br> <!-- Автор -->
-                <small>Email автора: {{ ad[4] }}</small> <!-- Email -->
+            {% if ads %}
+            <div class="list-group">
+                {% for ad in ads %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">{{ ad[1] }}</h5> <!-- Заголовок -->
+                    <p class="mb-1">{{ ad[2] }}</p> <!-- Контент -->
+                    <small>Автор: {{ ad[3] }}</small><br> <!-- Автор -->
+                    <small>Email автора: {{ ad[4] }}</small> <!-- Email -->
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        {% else %}
-        <p>Нет объявлений.</p>
-        {% endif %}
+            {% else %}
+            <p>Нет объявлений.</p>
+            {% endif %}
 
-        <div class="mt-4">
-            <a href="{{ url_for('create_ad') }}" class="btn btn-primary">Создать объявление</a>
+            <div class="mt-4">
+                <a href="{{ url_for('create_ad') }}" class="btn btn-primary">Создать объявление</a>
+            </div>
         </div>
-    </div>
+    </main>
     <footer>
         <p>&copy; Cool Girls Campaign, 2025</p>
     </footer>

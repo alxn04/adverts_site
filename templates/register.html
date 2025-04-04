@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<h lang="ru">
+<html lang="ru">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Регистрация</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='../static/styles.css') }}">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-        <script src="{{ url_for('static', filename='script.js') }}" defer></script>
-    </head>
-    <header class="center_header">
-        <button id="backButton">
-            <i class="fas fa-arrow-left"></i>
-            На главную
-        </button>
-        <h1>Регистрация</h1>
-    </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/styles.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<header class="center_header">
+    <button id="backButton">
+        <i class="fas fa-arrow-left"></i>
+        На главную
+    </button>
+    <h1>Регистрация</h1>
+</header>
 
-    <body>
+<body>
+    <main>
         <div class="form-container">
             <form class="reg-form" method="POST" enctype="multipart/form-data">
                 <form class="reg-form" method="POST" enctype="multipart/form-data">
@@ -31,9 +32,10 @@
                 </form>
             </form>
         </div>
-    </body>
+    </main>
     <footer>
         <p>&copy; Cool Girls Campaign, 2025</p>
     </footer>
+</body>
 
-    </html>
+</html>

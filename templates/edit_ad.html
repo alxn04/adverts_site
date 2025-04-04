@@ -92,21 +92,23 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Редактировать объявление</h1>
-        <form method="POST">
-            <label for="title">Заголовок</label>
-            <input type="text" id="title" name="title" value="{{ ad.title }}" required>
+    <main>
+        <div class="container">
+            <h1>Редактировать объявление</h1>
+            <form method="POST">
+                <label for="title">Заголовок</label>
+                <input type="text" id="title" name="title" value="{{ ad.title }}" required>
 
-            <label for="content">Содержание</label>
-            <textarea id="content" name="content" required>{{ ad.content }}</textarea>
+                <label for="content">Содержание</label>
+                <textarea id="content" name="content" required>{{ ad.content }}</textarea>
 
-            <button type="submit">Сохранить изменения</button>
-        </form>
-        <div>
-            <a href="{{ url_for('main') }}" class="back-link">На главную</a>
+                <button type="submit">Сохранить изменения</button>
+            </form>
+            <div>
+                <a href="{{ url_for('main') }}" class="back-link">На главную</a>
+            </div>
         </div>
-    </div>
+    </main>
     <footer>
         <p>&copy; Cool Girls Campaign, 2025</p>
     </footer>
